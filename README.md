@@ -1,6 +1,8 @@
 # sakarinv
 Sakarin villapaitapelin kosto
 
+Movement keys: hjkl
+
 Tested to work on Linux only
 
 To run in Windows: 
@@ -18,4 +20,4 @@ To run ghci, in cmd.exe run stack ghci
   - run :l sakarinv.hs
   - run main
 
-Known issues: on Windows you run into an error when accepting the challenge to make Sakari wear the jumper
+Known issues: on Windows you run into an error when accepting the challenge to make Sakari wear the jumper. With luck you can win if you type in your movement after y before pressing enter
