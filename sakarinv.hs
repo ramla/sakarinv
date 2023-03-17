@@ -24,6 +24,8 @@ main :: IO ()
 main = 
     do
         hSetBuffering stdin NoBuffering
+        hideCursor
+        setTitle "Sakarin villapaitapelin kosto"
         intro
         loop
             where
@@ -32,12 +34,14 @@ main =
                     sy <- randomRIO (-13,0) :: IO Int
                 --    let sx = (69)
                 --        sy = (-13)
-                    c <- getChar
+                    c <- getChar            
+                    clearFromCursorToLineBeginning
+                    cursorBackward 1
                     when (c /= 'q') $ do
                     case (toLower c) of
                         'y' -> trackShit 0 0 sx sy
                         'n' -> havisitPelin
-                        _   -> putStrLn "Ei noin"
+                        _   -> do putStrLn "Ei noin"
       
 trackShit x y sx sy =
     do  
