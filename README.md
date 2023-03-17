@@ -2,75 +2,37 @@
 
 **Movement keys:** hjkl
 
-Tested to work on Linux only
+**Other controls:** yn
 
-**Known issues:** 
-  - On Windows if you don't run the executable in cmd.exe the window closes right after drawing the end screen
-  - On Windows you run into an error when accepting the challenge to make Sakari wear the jumper. With luck you may be able to win if you type in your movement after *y* before pressing enter.
+### Known issues:
   - Visualisation of vertical movement is vague beyond a couple rows from Sakari
   - The readme is a mess
 
-## To run in Linux
+## To run
 
-  - click the green code button and choose "Download ZIP", unpack and navigate to sakarinv-master in a terminal
-  - be brave and run the executable *./sakarinv*
+  - run linux executable *sakarinv* in a terminal
+  - run windows executable *sakarinv.exe* in cmd.exe
 
-### **Or**
+## To compile
 
-  - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
-  - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs* 
-  - execute by running *./sakarinv*
+###  Step 1: 
+
+install ghcup with installation script found at https://www.haskell.org/ghcup/
+
+###  Step 2:
   
-   **NOTE:** this may require following some of the steps below
- 
-### **Or**
+- in Linux:
+  ```
+  git clone https://github.com/ramla/sakarinv
+  cd sakarinv
+  cabal build
+  cabal run
+  ```
 
-  - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
-
-  **NOTE:** to quit ghci, type *:q* and press enter
-      
-  - run *stack ghci*, stack will install ghci for you
-  - run *stack ghci --package random*
-  - run *stack ghci --package ansi-terminal*
-
-To run ghci, in cmd.exe run *stack ghci*
-
-  In ghci:
-  
-  - run *:set -package random*
-  - run *:l sakarinv.hs*
-  - run *main*
-
-## To run in Windows: 
-
-  - click the green code button and choose "Download ZIP", unpack and navigate to sakarinv-master directory in cmd.exe
-  - run sakarinv.exe
-  
-### **Or**
-
-  - install stack: https://get.haskellstack.org/stable/windows-x86_64-installer.exe
-
-  **NOTE:** to quit ghci, type *:q* and press enter
-
-  - in cmd.exe run *stack ghci*, stack will install ghci for you
-  - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
-  - run *./sakarinv*
-  
-  **NOTE:** this may require following some of the steps below
-
-### **Or**
-
-  - install stack: https://get.haskellstack.org/stable/windows-x86_64-installer.exe
-
-  **NOTE:** to quit ghci, type *:q* and press enter
-  
-  - in cmd.exe run *stack ghci --package random*
-  - in cmd.exe run *stack ghci --package ansi-terminal*
-
-To run ghci, in cmd.exe run *stack ghci*
-
-  In ghci:
-  
-  - run *:set -package random*
-  - run *:l sakarinv.hs*
-  - run *main*
+- in Windows: 
+  * click the green code button and "Download ZIP"
+  * unzip, run cmd.exe and navigate to sakarinv-master directory
+  ```
+  cabal build
+  cabal run
+  ```
