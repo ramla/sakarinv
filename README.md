@@ -7,6 +7,7 @@ Tested to work on Linux only
 **Known issues:** 
   - On Windows you run into an error when accepting the challenge to make Sakari wear the jumper. With luck you can win if you type in your movement after *y* before pressing enter.
   - Visualisation of vertical movement is vague beyond a couple rows from Sakari
+  - The readme is a mess
 
 ## To run in Linux
 
@@ -23,6 +24,8 @@ Tested to work on Linux only
   - execute by running *./sakarinv*
  
 ### **Or**
+
+  - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
 
   **NOTE:** to quit ghci, type *:q* and press enter
       
