@@ -13,17 +13,16 @@ Tested to work on Linux only
   - click the green code button and choose "Download ZIP", unpack and navigate to sakarinv-master in a terminal
   - be brave and run the executable *./sakarinv*
 
-**Or**
+### **Or**
 
   - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
-
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
   
   **NOTE:** this may require following some of the steps below
-      
-  - execute by running *./sakarinv*
   
-**Or**
+  - execute by running *./sakarinv*
+ 
+### **Or**
 
   **NOTE:** to quit ghci, type *:q* and press enter
       
@@ -44,18 +43,20 @@ To run ghci, in cmd.exe run *stack ghci*
   - click the green code button and choose "Download ZIP", unpack and navigate to sakarinv-master directory in cmd.exe
   - run sakarinv.exe
   
-**Or**
+### **Or**
 
   - install stack: https://get.haskellstack.org/stable/windows-x86_64-installer.exe
 
-**Or**
+  **NOTE:** to quit ghci, type *:q* and press enter
 
   - in cmd.exe run *stack ghci*, stack will install ghci for you
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
   
   **NOTE:** this may require following some of the steps below
 
-**Or**
+### **Or**
+
+  - install stack: https://get.haskellstack.org/stable/windows-x86_64-installer.exe
 
   **NOTE:** to quit ghci, type *:q* and press enter
   
