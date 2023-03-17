@@ -37,3 +37,8 @@ install ghcup with installation script found at https://www.haskell.org/ghcup/
   cabal build
   cabal run
   ```
+
+Thanks
+- Uni of Helsinki for hosting their Haskell MOOC which I did not yet finish
+- Viljami
+- Peeps at Functional Programming Discord for being super helpful <3
