@@ -20,6 +20,7 @@ Tested to work on Linux only
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
   
       **NOTE:** this may require following some of the steps below
+      
   - execute by running *./sakarinv*
   
 **Or**
