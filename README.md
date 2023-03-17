@@ -23,9 +23,9 @@ Tested to work on Linux only
       
   - execute by running *./sakarinv*
   
-**Or**
+**Or
       
-      **NOTE:** to quit ghci, type *:q* and press enter
+      NOTE:** to quit ghci, type *:q* and press enter
       
   - run *stack ghci*, stack will install ghci for you
   - run *stack ghci --package random*
@@ -55,9 +55,9 @@ To run ghci, in cmd.exe run *stack ghci*
   
       **NOTE:** this may require following some of the steps below
 
-**Or**
+**Or
 
-      **NOTE:** to quit ghci, type *:q* and press enter
+      NOTE:** to quit ghci, type *:q* and press enter
   
   - in cmd.exe run *stack ghci --package random*
   - in cmd.exe run *stack ghci --package ansi-terminal*
