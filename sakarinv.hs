@@ -23,30 +23,24 @@ import Control.Monad
 -- ruudun tyhjennys ennen printtii?
 -- interact (unlines . interpreter . lines) mutta sisäänleivottuna
 
-consume :: Char -> Bool
-consume 'q' = False
-consume _   = True
-
 main :: IO ()
 main = do
-        intro
-        loop
-  where
-    loop = do
-      c <- getChar
-      if consume c
-      then
-        case c of
-        'y' -> trackShit 0 0 
-        'n' -> havisitPelin
-        _   -> putStrLn "Ei noin"
-      else return ()
-
+       intro
+       loop
+            where
+            loop = do
+                c <- getChar
+                when (c /= 'q') $ do
+                    case c of
+                        'y' -> trackShit 0 0
+                        'n' -> havisitPelin
+                        _   -> putStrLn "Ei noin"
+      
 trackShit x y =
     do
         putStrLn ("todo")
 
-intro = do putStrLn "Sakarin villapaitapeli"
+intro = do putStrLn "Sakarin villapaitapelin kosto"
            putStrLn ""
            putStrLn "Pue sakarille villapaita y/n"
 havisitPelin = do putStrLn "Hävisit pelin"
