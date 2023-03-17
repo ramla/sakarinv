@@ -6,20 +6,19 @@ import Control.Monad -- when
 import Data.Char --toLower
 import Control.Exception --catch
 import System.Random
+import System.IO.NoBufferingWorkaround
 
 -- sakarin villapaitapeli cli 2023 remix
 --
--- oisko komentoja
--- h,j,k,l,enter
---
--- todo: 
--- pään pudistus? 
+-- todo:
+-- pään pudistus?
 -- artin luku erikseen alukss etteio liikaa io
 -- artin vakiointi? offset-luvut .arttiin?
 
 main :: IO ()
-main = 
+main =
     do
+        initGetCharNoBuffering
         hSetBuffering stdin NoBuffering
         hideCursor
         setTitle "Sakarin villapaitapelin kosto"
@@ -34,7 +33,7 @@ main =
                     sy <- randomRIO (-13,0) :: IO Int
                     --let sx = (69) -- debug sakari position
                     --    sy = (-13)
-                    c <- getChar            
+                    c <- getCharNoBuffering
                     clearFromCursorToLineBeginning
                     cursorBackward 1
                     when (c /= 'q') $ do
@@ -44,19 +43,19 @@ main =
                             _   -> do eiNoin
 
 trackShit x y sx sy sakari villapaita =
-    do  
+    do
         clearScreen
       --  putStrLn (show x ++ " " ++ show y ++ " " ++ show sx ++ " " ++ show sy) -- debug movement/position
         putView x y sx sy sakari villapaita
         if (x == sx && y == sy) then hiHiHi
         else
             do
-                c <- getChar
+                c <- getCharNoBuffering
                 case (toLower c) of
-                    'h' -> trackShit (x-1) y sx sy sakari villapaita 
+                    'h' -> trackShit (x-1) y sx sy sakari villapaita
                     'j' -> trackShit x (y-1) sx sy sakari villapaita
                     'k' -> trackShit x (y+1) sx sy sakari villapaita
-                    'l' -> trackShit (x+1) y sx sy sakari villapaita 
+                    'l' -> trackShit (x+1) y sx sy sakari villapaita
                     'q' -> return ()
                     _   -> eiNoin
 intro sakari =
@@ -69,7 +68,7 @@ intro sakari =
         putStrLn ""
         putStrLn ""
 
-havisitPelin = 
+havisitPelin =
     do  lose <- readFile "lose.art"
         clearScreen
         putStrLn lose
@@ -95,16 +94,16 @@ eiNoin =
 
 putView :: Int -> Int -> Int -> Int -> String -> String -> IO ()
 putView x y sx sy sakari villapaita =
-           let positionedContents = 
+           let positionedContents =
                 merge (lines positionedVillapaita) (lines (addRows (sy) (addColumns sx sakari)))
                 where positionedVillapaita = addRows y (addColumns x villapaita)
                 in putStrLn (unlines positionedContents)
 
 --merging arts one row at a time
 merge [] [] = []
-merge [] bot = bot 
-merge top [] = top 
-merge (toprow:top) (botrow:bot) = mergeRow toprow botrow : merge top bot 
+merge [] bot = bot
+merge top [] = top
+merge (toprow:top) (botrow:bot) = mergeRow toprow botrow : merge top bot
 
 --merging rows by comparing chars
 mergeRow [] [] = []
@@ -128,4 +127,3 @@ addRowsAfter n contents = addRowsAfter (n-1) (unlines (reverse ("" : reverse (li
 
 handler :: IOError -> IO ()
 handler e = putStrLn "File errorr"
-
