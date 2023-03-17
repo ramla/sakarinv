@@ -53,11 +53,11 @@ To run ghci, in cmd.exe run *stack ghci*
   - in cmd.exe run *stack ghci*, stack will install ghci for you
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
   
-      **NOTE:** this may require following some of the steps below
+  **NOTE:** this may require following some of the steps below
 
-**Or
+**Or**
 
-      NOTE:** to quit ghci, type *:q* and press enter
+  **NOTE:** to quit ghci, type *:q* and press enter
   
   - in cmd.exe run *stack ghci --package random*
   - in cmd.exe run *stack ghci --package ansi-terminal*
