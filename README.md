@@ -4,7 +4,7 @@ Sakarin villapaitapelin kosto
 Tested to work on Linux only
 
 To run in Windows: 
-  - install stack
+  - install stack https://get.haskellstack.org/stable/windows-x86_64-installer.exe
   - click the green code button and choose "Download ZIP", unpack and navigate to sakarinv-master directory in cmd.exe
 
 NOTE: to quit ghci, type :q and press enter
@@ -16,5 +16,6 @@ To run ghci, in cmd.exe run stack ghci
   In ghci:
   - run :set -package random
   - run :l sakarinv.hs
+  - run main
 
 Known issues: on Windows you run into an error when accepting the challenge to make Sakari wear the jumper
