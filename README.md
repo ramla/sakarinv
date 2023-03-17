@@ -18,11 +18,10 @@ Tested to work on Linux only
 ### **Or**
 
   - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
-  - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
-  
-  **NOTE:** this may require following some of the steps below
-  
+  - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs* 
   - execute by running *./sakarinv*
+  
+   **NOTE:** this may require following some of the steps below
  
 ### **Or**
 
@@ -55,6 +54,7 @@ To run ghci, in cmd.exe run *stack ghci*
 
   - in cmd.exe run *stack ghci*, stack will install ghci for you
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
+  - run *./sakarinv*
   
   **NOTE:** this may require following some of the steps below
 
