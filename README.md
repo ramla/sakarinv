@@ -10,7 +10,7 @@
 
 ## To run
 
-  - get the release and unzip
+  - get the release archive and extract
   - run linux executable *sakarinv* in a terminal
   - run windows executable *sakarinv.exe* in cmd.exe
 
