@@ -1,15 +1,3 @@
-module Sakarinv where
-
-import System.IO
--- import System.IO.Unsafe
-
-import Control.Monad
--- tällä "when"
-
---import Data.Char
---import Data.List
---import Data.Either
-
 -- sakarin villapaitapeli cli 2023 remix
 --
 -- oisko komentoja
@@ -22,29 +10,33 @@ import Control.Monad
 -- arttien overlay
 -- ruudun tyhjennys ennen printtii?
 -- interact (unlines . interpreter . lines) mutta sisäänleivottuna
+module Sakarinv where
+
+import System.IO
+
+import Control.Monad
+-- tällä "when"
+
 
 main :: IO ()
 main = do
-       intro
-       loop
-            where
-            loop = do
-                c <- getChar
-                when (c /= 'q') $ do
-                    case c of
-                        'y' -> trackShit 0 0
-                        'n' -> havisitPelin
-                        _   -> putStrLn "Ei noin"
-      
-trackShit x y =
-    do
-        putStrLn ("todo")
+    hSetBuffering stdin NoBuffering
+    intro
+    c <- getChar
+    hSetBuffering stdin NoBuffering
+    when (c /= 'q') $ do trackShit 0 0 c
 
-intro = do putStrLn "Sakarin villapaitapelin kosto"
-           putStrLn ""
-           putStrLn "Pue sakarille villapaita y/n"
-havisitPelin = do putStrLn "Hävisit pelin"
-                  putStrLn ""
+trackShit x y c = do
+    putStrLn ("todo")
+
+intro = do 
+    putStrLn "Sakarin villapaitapelin kosto"
+    putStrLn ""
+    putStrLn "Pue sakarille villapaita y/n"
+
+havisitPelin = do 
+    putStrLn "Hävisit pelin"
+    putStrLn ""
 
 
 -- readPlayer :: IO ()
@@ -52,8 +44,8 @@ havisitPelin = do putStrLn "Hävisit pelin"
 --     c <- input
 --     show c
     
-input = do
-        ch <- getChar
-        if ch `elem` ['h','j','k','l','q'] then do
-            return ch else
-            input
+--input = do
+--        ch <- getChar
+--        if ch `elem` ['h','j','k','l','q'] then do
+--            return ch else
+--            input
