@@ -13,12 +13,12 @@ import System.Random
 -- h,j,k,l,enter
 --
 -- todo: 
--- sakari artti
--- villapaita artti
--- artin printtaus
--- arttien overlay
--- ruudun tyhjennys ennen printtii?
--- interact (unlines . interpreter . lines) mutta sisäänleivottuna
+-- silmät ainaki lopuks
+-- silmien liike? 
+-- pään pudistus? 
+-- sakari joka kuvaan?
+-- artin luku erikseen alukss etteio liikaa io
+-- artin vakiointi? offset-luvut .arttiin?
 
 main :: IO ()
 main = 
@@ -28,8 +28,10 @@ main =
         loop
             where
             loop = do
-                    sx <- randomRIO (0,10) :: IO Int
-                    sy <- randomRIO (0,10) :: IO Int
+                    sx <- randomRIO (0,69) :: IO Int
+                    sy <- randomRIO (-13,0) :: IO Int
+                --    let sx = (69)
+                --        sy = (-13)
                     c <- getChar
                     when (c /= 'q') $ do
                     case (toLower c) of
@@ -40,12 +42,11 @@ main =
 trackShit x y sx sy =
     do  
         clearScreen
-        putStrLn (show x ++ " " ++ show y ++ " " ++ show sx ++ " " ++ show sy)
+        putStrLn (show x ++ " " ++ show y ++ " " ++ show sx ++ " " ++ show sy) 
         putView x y sx sy
         if (x == sx && y == sy) then hihihi
         else
             do
-               -- hSetBuffering stdin NoBuffering
                 c <- getChar
                 case (toLower c) of
                     'h' -> trackShit (x-1) y sx sy 
@@ -71,10 +72,13 @@ putView x y sx sy =
         do contents <- readFile "test"
            villapaita <- readFile "test2"
            let positionedContents = 
-                merge (lines positionedVillapaita) (lines (addRows (y) (addColumns x contents)))
-                where positionedVillapaita = addRows sy (addColumns sx villapaita)
+                merge (lines positionedVillapaita) (lines (addRows (sy) (addColumns sx contents)))
+                where positionedVillapaita = addRows y (addColumns x villapaita)
                 in putStrLn (unlines positionedContents)
            return ()
+
+-- canvas min sakarin sij+8,sakarin sij+4 (80x24 sakarimaxsij. 72,-20, paitsiettä
+-- sakarin ivllapaita vie vielä +3rivii ja on 11 levee (+3) eli 69,-17 (-debug 1, -input 1) -> 69,15
 
 merge [] [] = []
 merge [] bot = bot 
@@ -106,15 +110,3 @@ addRowsAfter n contents = addRowsAfter (n-1) (unlines (reverse ("" : reverse (li
 handler :: IOError -> IO ()
 handler e = putStrLn "File errorr"
 
-
-
--- readPlayer :: IO ()
--- readPlayer = do
---     c <- input
---     show c
-    
-input = do
-        ch <- getChar
-        if ch `elem` ['h','j','k','l','q'] then do
-            return ch else
-            input
