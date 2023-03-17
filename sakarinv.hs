@@ -38,10 +38,10 @@ main =
                     clearFromCursorToLineBeginning
                     cursorBackward 1
                     when (c /= 'q') $ do
-                    case (toLower c) of
-                        'y' -> trackShit 0 0 sx sy sakari villapaita
-                        'n' -> havisitPelin
-                        _   -> do eiNoin
+                        case (toLower c) of
+                            'y' -> trackShit 0 0 sx sy sakari villapaita
+                            'n' -> havisitPelin
+                            _   -> do eiNoin
 
 trackShit x y sx sy sakari villapaita =
     do  
