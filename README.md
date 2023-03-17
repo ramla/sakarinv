@@ -27,7 +27,8 @@ To run ghci, in cmd.exe run *stack ghci*
   - in cmd.exe run *stack ghci --package random*
   - in cmd.exe run *stack ghci --package ansi-terminal*
 
-To run ghci, in cmd.exe run stack ghci
+To run ghci, in cmd.exe run *stack ghci*
+
   In ghci:
   - run *:set -package random*
   - run *:l sakarinv.hs*
