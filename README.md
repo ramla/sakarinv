@@ -6,6 +6,7 @@ Tested to work on Linux only
 
 ## To run in Linux
   - install stack with the install script: *wget -qO- https://get.haskellstack.org/ | sh*
+      
       **NOTE:** to quit ghci, type *:q* and press enter
   - run *stack ghci*, stack will install ghci for you
   - run *stack ghci --package random*
