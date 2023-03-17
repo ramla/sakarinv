@@ -19,13 +19,13 @@ Tested to work on Linux only
 
   - compile by running *stack ghc -- --make -main-is Sakarinv sakarinv.hs*
   
-      **NOTE:** this may require following some of the steps below
+  **NOTE:** this may require following some of the steps below
       
   - execute by running *./sakarinv*
   
-**Or
-      
-      NOTE:** to quit ghci, type *:q* and press enter
+**Or**
+
+  **NOTE:** to quit ghci, type *:q* and press enter
       
   - run *stack ghci*, stack will install ghci for you
   - run *stack ghci --package random*
