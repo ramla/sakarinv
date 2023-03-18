@@ -1,10 +1,10 @@
 module Main where
 
 import System.IO
-import System.Console.ANSI --clearScreen
-import Control.Monad -- when
-import Data.Char --toLower
-import Control.Exception --catch
+import System.Console.ANSI (clearScreen, hideCursor, showCursor, cursorBackward, clearFromCursorToLineBeginning, setTitle)
+import Control.Monad (when)
+import Data.Char (toLower)
+import Control.Exception (catch)
 import System.Random
 import System.IO.NoBufferingWorkaround
 
@@ -75,6 +75,7 @@ havisitPelin =
         putStrLn "Hävisit pelin"
         putStrLn ""
         putStrLn ""
+        showCursor
 
 hiHiHi =
     do  win <- readFile "win.art"
@@ -85,12 +86,14 @@ hiHiHi =
         putStrLn "Voitit pelin"
         putStrLn ""
         putStrLn ""
+        showCursor
 
 eiNoin =
     do  putStrLn "Ei noin!"
         putStrLn ""
         putStrLn ""
         putStrLn ""
+        showCursor
 
 putView :: Int -> Int -> Int -> Int -> String -> String -> IO ()
 putView x y sx sy sakari villapaita =
@@ -114,10 +117,10 @@ mergeRow (t:toprow) (b:botrow) = if t > b then t:mergeRow toprow botrow else b:m
 addColumns 0 contents = contents
 addColumns n contents = addColumns (n-1) (unlines (map (\x -> " " ++ x) (lines contents)))
 
-addRows n contents = case n of _
-                                | n < 0 -> addRowsBefore (-n) contents
-                                | n > 0 -> addRowsAfter n contents
-                                | n == 0 -> contents
+addRows n contents
+    | n < 0  = addRowsBefore (-n) contents
+    | n > 0  = addRowsAfter n contents
+    | n == 0 = contents
 
 addRowsBefore 0 contents = contents
 addRowsBefore n contents = addRowsBefore (n-1) (unlines ("" : lines contents))
