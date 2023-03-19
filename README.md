@@ -2,11 +2,10 @@
 
 **Movement keys:** hjkl
 
-**Other controls:** yn
+**Other controls:** qyn
 
 ### Known issues:
   - No visualisation of vertical movement above a couple rows from Sakari
-  - Moving left at starting/leftmost position bugs out the game and terminal cursor is left hidden because an end screen did not restore it
 
 ## To run
 

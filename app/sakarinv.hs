@@ -5,8 +5,9 @@ import System.Console.ANSI (clearScreen, hideCursor, showCursor, cursorBackward,
 import Control.Monad (when)
 import Data.Char (toLower)
 import Control.Exception (catch)
-import System.Random
+import System.Random (randomRIO)
 import System.IO.NoBufferingWorkaround
+import System.Console.Terminal.Size (size, Window (..))
 
 -- sakarin villapaitapeli cli 2023 remix
 --
@@ -14,6 +15,7 @@ import System.IO.NoBufferingWorkaround
 -- pään pudistus?
 -- artin luku erikseen alukss etteio liikaa io
 -- artin vakiointi? offset-luvut .arttiin?
+-- terminaalin koon asettamat rajat funktioihin
 
 main :: IO ()
 main =
@@ -29,10 +31,11 @@ main =
             where
             loop sakari villapaita = do
                     -- set sakari position
-                    sx <- randomRIO (10,69) :: IO Int
-                    sy <- randomRIO (-13,0) :: IO Int
-                    --let sx = (69) -- debug sakari position
-                    --    sy = (-13)
+                    termXY <- size
+                    sx <- randomRIO (6,((getTermX termXY) - 11)) :: IO Int
+                    sy <- randomRIO (0 - (getTermY termXY) + 3,0) :: IO Int
+                    --let sx = (5) -- debug sakari position
+                    --    sy = (-41)
                     c <- getCharNoBuffering
                     clearFromCursorToLineBeginning
                     cursorBackward 1
@@ -45,14 +48,16 @@ main =
 trackShit x y sx sy sakari villapaita =
     do
         clearScreen
-      --  putStrLn (show x ++ " " ++ show y ++ " " ++ show sx ++ " " ++ show sy) -- debug movement/position
+        putStrLn (show x ++ " " ++ show y ++ " " ++ show sx ++ " " ++ show sy) -- debug movement/position
         putView x y sx sy sakari villapaita
         if (x == sx && y == sy) then hiHiHi
         else
             do
                 c <- getCharNoBuffering
                 case (toLower c) of
-                    'h' -> trackShit (x-1) y sx sy sakari villapaita
+                    'h' -> if x == 0 
+                      then trackShit x y sx sy sakari villapaita 
+                      else trackShit (x-1) y sx sy sakari villapaita
                     'j' -> trackShit x (y-1) sx sy sakari villapaita
                     'k' -> trackShit x (y+1) sx sy sakari villapaita
                     'l' -> trackShit (x+1) y sx sy sakari villapaita
@@ -123,10 +128,16 @@ addRows n contents
     | n == 0 = contents
 
 addRowsBefore 0 contents = contents
-addRowsBefore n contents = addRowsBefore (n-1) (unlines ("" : lines contents))
+addRowsBefore n contents = addRowsBefore (n-1) ("\n" ++ contents)
 
 addRowsAfter 0 contents = contents
-addRowsAfter n contents = addRowsAfter (n-1) (unlines (reverse ("" : reverse (lines contents))))
+addRowsAfter n contents = addRowsAfter (n-1) (contents ++ "\n")
+
+getTermX (Just (Window _ x)) = x
+getTermX _ = 80
+
+getTermY (Just (Window y _)) = y
+getTermY _ = 24
 
 handler :: IOError -> IO ()
 handler e = putStrLn "File errorr"
