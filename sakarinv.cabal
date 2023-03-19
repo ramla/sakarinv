@@ -1,6 +1,6 @@
 cabal-version:      2.4
 name:               sakarinv
-version:            0.1.0.0
+version:            0.1.1.0
 
 -- A short (one-line) description of the package.
 -- synopsis: Sakarin villapaitapelin kosto
@@ -47,7 +47,7 @@ executable sakarinv
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.16.4.0, sakarinv, random, no-buffering-workaround, ansi-terminal
+    build-depends:    base ^>=4.16.4.0, sakarinv, random, no-buffering-workaround, ansi-terminal, terminal-size
 
     hs-source-dirs:   app
     default-language: Haskell2010
