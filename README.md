@@ -6,6 +6,7 @@
 
 ### Known issues:
   - No visualisation of vertical movement above a couple rows from Sakari
+  - Position debug showing in release
 
 ## To run
 
