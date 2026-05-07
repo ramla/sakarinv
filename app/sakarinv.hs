@@ -25,6 +25,7 @@ main =
         hSetEncoding stdin utf8
         hSetEncoding stdout utf8
         hSetEncoding stderr utf8
+        hSetEncoding handle utf8
         hideCursor
         setTitle "Sakarin villapaitapelin kosto"
         sakari <- readFile "sakari.art"
