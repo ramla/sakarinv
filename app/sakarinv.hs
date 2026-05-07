@@ -22,6 +22,8 @@ main =
     do
         initGetCharNoBuffering
         hSetBuffering stdin NoBuffering
+        hSetEncoding stdout utf8
+        hSetEncoding stderr utf8
         hideCursor
         setTitle "Sakarin villapaitapelin kosto"
         sakari <- readFile "sakari.art"
