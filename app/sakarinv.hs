@@ -22,6 +22,7 @@ main =
     do
         initGetCharNoBuffering
         hSetBuffering stdin NoBuffering
+        hSetEncoding stdin utf8
         hSetEncoding stdout utf8
         hSetEncoding stderr utf8
         hideCursor
