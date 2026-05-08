@@ -1,6 +1,7 @@
 module Main where
 
 import System.IO
+import GHC.IO.Encoding (setLocaleEncoding, utf8)
 import System.Console.ANSI (clearScreen, hideCursor, showCursor, cursorBackward, clearFromCursorToLineBeginning, setTitle)
 import Control.Monad (when)
 import Data.Char (toLower)
@@ -25,7 +26,7 @@ main =
         hSetEncoding stdin utf8
         hSetEncoding stdout utf8
         hSetEncoding stderr utf8
-        hSetEncoding handle utf8
+        setLocaleEncoding utf8
         hideCursor
         setTitle "Sakarin villapaitapelin kosto"
         sakari <- readFile "sakari.art"
